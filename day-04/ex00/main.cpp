@@ -6,13 +6,15 @@
 /*   By: zfarouk <zfarouk@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 18:48:18 by zfarouk           #+#    #+#             */
-/*   Updated: 2026/01/13 01:30:42 by zfarouk          ###   ########.fr       */
+/*   Updated: 2026/01/14 02:30:51 by zfarouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongCat.hpp"
+#include "WrongAnimal.hpp"
 
 int main()
 {
@@ -28,8 +30,8 @@ int main()
     delete j;
     delete i;
 
-    const Animal* wronganimal = new Animal();
-    const Animal* wrongcat = new Cat();
+    const WrongAnimal* wronganimal = new WrongCat();
+    const WrongAnimal* wrongcat = new WrongCat();
     std::cout << wrongcat->getType() << " " << std::endl;
     wrongcat->makeSound();
     wronganimal->makeSound();

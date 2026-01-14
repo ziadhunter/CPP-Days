@@ -6,20 +6,19 @@
 /*   By: zfarouk <zfarouk@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 18:48:18 by zfarouk           #+#    #+#             */
-/*   Updated: 2026/01/13 01:50:39 by zfarouk          ###   ########.fr       */
+/*   Updated: 2026/01/14 02:18:17 by zfarouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "AAnimal.hpp"
-#include "Brain.hpp"
+#include "Animal.hpp"
 
 int main()
 {
     const int arraySize = 4;
-    AAnimal* meta = new AAnimal();
+    Animal* animals[arraySize];
 
     for (int i = 0; i < arraySize; ++i)
     {
@@ -35,29 +34,12 @@ int main()
         animals[i]->makeSound();
     }
 
-    std::cout << "\n--- Testing Deep Copy ---\n";
-    Dog* originalDog = new Dog();
-    originalDog->getBrain()->setIdea(0, "Original Idea");
+    std::cout << "\n--- Proving Animal class is abstract ---" << std::endl;
+    std::cout << "The following line is commented out, because it would cause a compile error:" << std::endl;
+    std::cout << "// Animal* meta = new Animal();" << std::endl;
+    // Animal* meta = new Animal(); // This line will cause a compile error
 
-    Dog* copyDog = new Dog(*originalDog);
-
-    std::cout << "Original Dog's first idea: " << originalDog->getBrain()->getIdea(0) << std::endl;
-    std::cout << "Copied Dog's first idea: " << copyDog->getBrain()->getIdea(0) << std::endl;
-
-    std::cout << "--- Modifying copied dog's brain ---\n";
-    copyDog->getBrain()->setIdea(0, "New Idea");
-
-    std::cout << "Original Dog's first idea after modification: " << originalDog->getBrain()->getIdea(0) << std::endl;
-    std::cout << "Copied Dog's first idea after modification: " << copyDog->getBrain()->getIdea(0) << std::endl;
-
-    if (originalDog->getBrain() != copyDog->getBrain())
-        std::cout << "Brains are at different memory addresses (Correct Deep Copy)!" << std::endl;
-    else
-        std::cout << "Brains are at the same memory address (Incorrect Shallow Copy)!" << std::endl;
-
-    delete originalDog;
-    delete copyDog;
-
+    std::cout << "\n--- Cleaning up ---" << std::endl;
     for (int i = 0; i < arraySize; ++i)
     {
         delete animals[i];
