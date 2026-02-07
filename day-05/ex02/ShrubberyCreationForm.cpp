@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    ShrubberyCreationForm.cpp                         :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfarouk <zfarouk@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: zfarouk <zfarouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 16:19:01 by zfarouk           #+#    #+#             */
-/*   Updated: 2026/02/07 17:09:31 by zfarouk          ###   ########.fr       */
+/*   Updated: 2026/02/07 19:23:45 by zfarouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include " ShrubberyCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm()
     : AForm("ShrubberyCreationForm", "unknown", 145, 137)
@@ -39,7 +39,37 @@ ShrubberyCreationForm&  ShrubberyCreationForm::operator=(const  ShrubberyCreatio
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-void execute(Bureaucrat const & executor)
+void ShrubberyCreationForm::exec(Bureaucrat const& executor) const
 {
-    
+    const std::string treeLines[18] = {
+        "           ,           ",
+        "          / \\          ",
+        "        .'   '.        ",
+        "       /       \\       ",
+        "      /.-.   .-.\\      ",
+        "      `/  '.'   \\`     ",
+        "     .'          '.    ",
+        "    /.--.     .--.\\    ",
+        "    `/   '. .'    \\`   ",
+        "   .'      `       '.  ",
+        "  /.---.       .----.\\ ",
+        "  `/    `.   .'     \\` ",
+        " .'       `.'        '.",
+        "/,----,          ,----,\\",
+        "`'-.__.;-,____,-;.__.-'",
+        "         |||||         ",
+        "         |||||         ",
+        "         `\"\"\"`         "
+    };
+    std::ofstream file;
+    std::string filename = this->getTarget() + "_shrubbery";
+
+    file.open(filename.c_str());
+    if (!file.is_open())
+        return ;
+
+    for (int i = 0; i < 18; i++)
+        file << treeLines[i] << std::endl;
+
+    file.close();
 }

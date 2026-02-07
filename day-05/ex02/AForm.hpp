@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfarouk <zfarouk@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: zfarouk <zfarouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 10:49:56 by zfarouk           #+#    #+#             */
-/*   Updated: 2026/02/07 17:13:07 by zfarouk          ###   ########.fr       */
+/*   Updated: 2026/02/07 19:25:31 by zfarouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AFORM_HPP
-#define AFORM_HPP
+#ifndef FORM_HPP
+#define FORM_HPP
 
 #include "Bureaucrat.hpp"
+#include <fstream>
 
 class AForm {
     private:
@@ -24,7 +25,7 @@ class AForm {
 		int			_grade_to_exec;
 	public:
 		AForm();
-		AForm(std::string name, std::string AForm, int sign_grad, int exec_grad);
+		AForm(std::string name, std::string target, int sign_grad, int exec_grad);
 		AForm(const AForm& other);
 		~AForm();
 		AForm& operator=(const AForm& other);
@@ -33,9 +34,12 @@ class AForm {
 		int getSignGrade() const;
 		int getExecGrade() const;
 		bool getIsSigned() const;
-		void beSigned(const Bureaucrat& br);
-		virtual void execute(Bureaucrat const & executor) = 0;
 		void set_attr(std::string name, std::string target, bool signede, int g_s, int g_e);
+		
+		void beSigned(const Bureaucrat& br);
+		void execute(Bureaucrat const & executor) const;
+		virtual void exec(Bureaucrat const & executor) const = 0;
+		
 		
 		
 		
@@ -52,6 +56,14 @@ class AForm {
 				const char *what() const throw()
 				{
 						return "Grade is too low";
+				}
+		};
+		
+				class FormNotSignedException : public  std::exception {
+			public:
+				const char *what() const throw()
+				{
+					return "this form is not signed yet";
 				}
 		};
 };

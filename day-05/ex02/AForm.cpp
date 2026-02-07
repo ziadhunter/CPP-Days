@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zfarouk <zfarouk@student.1337.ma>          +#+  +:+       +#+        */
+/*   By: zfarouk <zfarouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 12:39:21 by zfarouk           #+#    #+#             */
-/*   Updated: 2026/02/07 14:10:53 by zfarouk          ###   ########.fr       */
+/*   Updated: 2026/02/07 19:23:18 by zfarouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 AForm::AForm()
 {
 	this->_name = "empty";
+	this->_target = "unknown";
 	this->_grade_to_sign = 150;
 	this->_grade_to_exec = 150;
 	this->_signed = 0;
@@ -100,4 +101,14 @@ std::ostream& operator<<(std::ostream& os, AForm& fr)
     os << "form name: " << fr.getName() <<  ", grade required to sign: " << fr.getSignGrade() 
         << ", grade required to execute : " << fr.getExecGrade() << std::endl;
     return (os);
+}
+
+
+void AForm::execute(Bureaucrat const & executor) const
+{
+	if (this->getExecGrade() < executor.getGrade() || this->getSignGrade() < executor.getGrade())
+		throw GradeTooLowException();
+	if (!this->getIsSigned())
+		throw FormNotSignedException();
+	this->exec(executor);
 }
