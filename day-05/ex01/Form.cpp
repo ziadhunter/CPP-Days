@@ -6,7 +6,7 @@
 /*   By: zfarouk <zfarouk@student.1337.ma>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 12:39:21 by zfarouk           #+#    #+#             */
-/*   Updated: 2026/02/07 14:10:53 by zfarouk          ###   ########.fr       */
+/*   Updated: 2026/02/07 17:17:12 by zfarouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,3 +81,4 @@ std::ostream& operator<<(std::ostream& os, Form& fr)
         << ", grade required to execute : " << fr.getExecGrade() << std::endl;
     return (os);
 }
+

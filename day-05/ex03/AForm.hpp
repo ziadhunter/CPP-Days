@@ -6,7 +6,7 @@
 /*   By: zfarouk <zfarouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/07 10:49:56 by zfarouk           #+#    #+#             */
-/*   Updated: 2026/02/08 06:28:49 by zfarouk          ###   ########.fr       */
+/*   Updated: 2026/02/08 07:59:41 by zfarouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class AForm {
 		AForm();
 		AForm(std::string name, std::string target, int sign_grad, int exec_grad);
 		AForm(const AForm& other);
-		~AForm();
+		virtual ~AForm();
 		AForm& operator=(const AForm& other);
 		const std::string& getName() const;
 		const std::string& getTarget() const;

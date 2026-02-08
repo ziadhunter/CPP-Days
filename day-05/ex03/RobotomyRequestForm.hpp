@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfarouk <zfarouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/07 16:05:03 by zfarouk           #+#    #+#             */
-/*   Updated: 2026/02/08 06:20:53 by zfarouk          ###   ########.fr       */
+/*   Created: 2026/02/08 06:07:12 by zfarouk           #+#    #+#             */
+/*   Updated: 2026/02/08 06:13:01 by zfarouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  ShrubberyCreationForm_HPP
-#define  ShrubberyCreationForm_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 
 #include "AForm.hpp"
 
-class  ShrubberyCreationForm : public AForm {
+class RobotomyRequestForm : public AForm {
     public:
-        ShrubberyCreationForm();
-        ShrubberyCreationForm(std::string target);
-        ShrubberyCreationForm(const  ShrubberyCreationForm& other);
-        ShrubberyCreationForm& operator=(const  ShrubberyCreationForm& other);
-        ~ShrubberyCreationForm();
+        RobotomyRequestForm();
+        RobotomyRequestForm(std::string target);
+        RobotomyRequestForm(const RobotomyRequestForm& other);
+        RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
+        ~RobotomyRequestForm();
         void exec() const;
 };
 
