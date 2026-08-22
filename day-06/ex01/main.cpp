@@ -22,7 +22,8 @@ int main() {
 
     // Serialize
     uintptr_t raw = Serializer::serialize(originalPtr);
-    std::cout << "Serialized value: " << raw << std::endl;
+    std::cout << "Serialized value: 0x" << std::hex << raw << std::endl;
+    std::cout << "Original pointer: " << originalPtr << std::endl;
 
     // Deserialize
     Data* newPtr = Serializer::deserialize(raw);

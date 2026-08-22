@@ -13,33 +13,33 @@
 #ifndef Array_HPP
 #define Array_HPP
 
+#include <exception>
 
 template <typename T>
 class Array {
-    privete:
+    private:
         T *row;
-        Unsigned int len;
+        unsigned int len;
     public:
-        Array(): row(nullptr), len(0) {};
-        Array(undigned int len)
-        {
-            row = new T[n]();
-        }
-        Array(const Array& other) : row(new T[other.size]()), len(other.getlen())
-        {
-            this = other;
-        }
-        Array& operator=(const Array& other)
-        {
-            if (this != &other)
-            {
-                delete[] row;
-                row = new T[other.len];
-                len = other.len;
-                for (int i)
-            }
-        }
+        Array();
+        Array(unsigned int len);
+        Array(const Array& other);
+        Array& operator=(const Array& other);
         ~Array();
+
+    T& operator[](unsigned int i);
+    const T& operator[](unsigned int i) const;
+
+    unsigned int size() const;
+
+    class OutOfRangeException : public std::exception {
+    public:
+        virtual const char* what() const throw() {
+            return "Index out of range";
+        }
+    };
 };
+
+#include "Array.tpp"
 
 #endif

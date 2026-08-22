@@ -23,12 +23,12 @@ int main() {
     int arr[3] = {1,2,3};
     const int c_arr[3] = {4,5,6};
 
-    iter(arr, 3, print<int>);      // works
-    iter(arr, 3, addOne<int>);     // modifies arr
-    iter(arr, 3, print<int>);      // shows modified arr
+    iter(arr, 3, print<int>);
+    iter(arr, 3, addOne<int>);
+    iter(arr, 3, print<int>);
 
     iter(c_arr, 3, print<const int>);    // works for const array
-    // iter(c_arr, 3, addOne<const int>); // ❌ error: cannot modify const
+    // iter(c_arr, 3, addOne<const int>); // error: cannot modify const
 
     return 0;
 }

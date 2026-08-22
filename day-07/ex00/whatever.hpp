@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Template.hpp                                       :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zfarouk <zfarouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Template_HPP
-#define Template_HPP
+#ifndef WHATEVER_HPP
+#define WHATEVER_HPP
 
 template <typename T>
 void swap(T& first, T& second)
@@ -23,7 +23,7 @@ void swap(T& first, T& second)
 }
 
 template <typename T>
-const T& min(const T& first, const T& second)
+T min(const T& first, const T& second)
 {
     if (second <= first)
         return second;
@@ -31,7 +31,7 @@ const T& min(const T& first, const T& second)
 }
 
 template <typename T>
-const T& max(const T& first, const T& second)
+T max(const T& first, const T& second)
 {
     if (second >= first)
         return second;
