@@ -39,8 +39,8 @@ int handleChar(const std::string &input)
         else
             std::cout << "char: Non displayable" << std::endl;
         std::cout << "int: " << static_cast<int>(c) << std::endl;
-        std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
-        std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
+        std::cout << std::fixed << "float: " << static_cast<float>(c) << ".0f" << std::endl;
+        std::cout << std::fixed << "double: " << static_cast<double>(c) << ".0" << std::endl;
         return 1;
     }
     return 0;
@@ -94,12 +94,11 @@ int handleFloat(const std::string& input)
         std::cout << "char: '" << static_cast<char>(flt) << "'" << std::endl;
     }
 
-	if (flt > INT_MAX || flt < INT_MIN)
+	if (static_cast<double>(flt) > INT_MAX || static_cast<double>(flt) < INT_MIN)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(flt) << std::endl;
     
-    // chi 7al lscientific notation
 	std::cout << "float: " << flt;
     if (flt - std::floor(flt) == 0)
         std::cout << ".0";
@@ -159,15 +158,15 @@ int handledouble(const std::string &literal){
 void ScalarConverter::convert(const std::string &input)
 {
     if (handlePseudoLiterals(input))
-        std::cout << "Conversion completed for pseudo-literal";
+        return;
     else if (handleChar(input))
-        std::cout << "Conversion completed for char";
+        return;
     else if (handleInt(input))
-        std::cout << "Conversion completed for int";
+        return;
     else if (handleFloat(input))
-        std::cout << "Conversion completed for float";
+        return;
     else if (handledouble(input))
-        std::cout << "Conversion completed for double";
+        return;
 }
 
 

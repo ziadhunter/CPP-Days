@@ -6,7 +6,7 @@
 /*   By: zfarouk <zfarouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 22:42:09 by zfarouk           #+#    #+#             */
-/*   Updated: 2026/02/11 22:42:28 by zfarouk          ###   ########.fr       */
+/*   Updated: 2026/08/29 11:32:07 by zfarouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int main() {
     Data d;
-    d.value = 42;
+    d.value = 12;
 
     Data* originalPtr = &d;
 
@@ -27,7 +27,7 @@ int main() {
 
     // Deserialize
     Data* newPtr = Serializer::deserialize(raw);
-    std::cout << "Deserialized value: " << newPtr->value << std::endl;
+    std::cout << "Deserialized value: " << std::dec << newPtr->value << std::endl;
 
     // Check if pointers are equal
     if (originalPtr == newPtr)
