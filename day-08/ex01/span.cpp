@@ -5,8 +5,6 @@ Span::Span()
 
 Span::Span(unsigned int size): max_size(size)
 {
-    if(size < 1)
-        throw SizeShouldBePositive();
 }
 
 Span::Span(const Span& other)
@@ -65,14 +63,13 @@ int Span::longestSpan()
 {
     if (numbers.size() < 2)
         throw NotEnoughNumbers();
-    std::vector<int> sorted_numbers = numbers;
-    std::sort(sorted_numbers.begin(), sorted_numbers.end());
 
-    int min_number = sorted_numbers.front();
-    int max_number = sorted_numbers.back();
+    int minNumber = *std::min_element(numbers.begin(), numbers.end());
+    int maxNumber = *std::max_element(numbers.begin(), numbers.end());
 
-    return max_number - min_number;
+    return maxNumber - minNumber;
 }
+
 
 const char* Span::SizeShouldBePositive::what() const throw()
 {

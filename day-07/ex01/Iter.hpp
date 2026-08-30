@@ -6,7 +6,7 @@
 /*   By: zfarouk <zfarouk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 21:55:29 by zfarouk           #+#    #+#             */
-/*   Updated: 2026/02/12 22:15:55 by zfarouk          ###   ########.fr       */
+/*   Updated: 2026/08/30 00:12:50 by zfarouk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 
 template <typename T, typename F>
-void iter(T *array, size_t length, F f) {
+void iter(T *array, const size_t length, F f) {
     if (array == NULL)
         return;
     for (size_t i = 0; i < length; ++i) {

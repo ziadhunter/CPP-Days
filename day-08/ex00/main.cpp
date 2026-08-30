@@ -33,5 +33,19 @@ int main()
         std::cout << "Exception: " << e.what() << std::endl;
     }
 
+    const std::vector<int> constNumbers = numbers;
+
+    try
+    {
+        std::vector<int>::const_iterator it = easyfind(constNumbers, 30);
+        std::cout << "Found in const container: " << *it << std::endl;
+    }
+    catch (const std::exception& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+
+    return 0;
+
     return 0;
 }

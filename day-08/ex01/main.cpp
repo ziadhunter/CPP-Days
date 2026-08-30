@@ -16,8 +16,8 @@ int main()
         sp.addNumber(9);
         sp.addNumber(11);
 
-        std::cout << "Shortest Span: " << sp.shortestSpan() << std::endl; // Expected: 2 (9 - 11 or 17 - ...) -> (11 - 9 = 2)
-        std::cout << "Longest Span:  " << sp.longestSpan() << std::endl;  // Expected: 14 (17 - 3)
+        std::cout << "Shortest Span: " << sp.shortestSpan() << std::endl;
+        std::cout << "Longest Span:  " << sp.longestSpan() << std::endl;
     }
     catch (const std::exception& e)
     {
@@ -25,57 +25,44 @@ int main()
     }
 
     std::cout << "\n=== 2. EXCEPTION TESTS ===" << std::endl;
-    
-    // Exception: Capacity 0
-    try
-    {
-        std::cout << "Testing 0 size initialization: ";
-        Span sp0(0);
-    }
-    catch (const std::exception& e)
-    {
-        std::cout << "Caught -> " << e.what() << std::endl;
-    }
 
-    // Exception: Adding beyond capacity
     try
     {
         std::cout << "Testing overflow addition: ";
         Span spFull(2);
         spFull.addNumber(1);
         spFull.addNumber(2);
-        spFull.addNumber(3); // Should throw
+        spFull.addNumber(3);
     }
     catch (const std::exception& e)
     {
         std::cout << "Caught -> " << e.what() << std::endl;
     }
 
-    // Exception: Calculating span with 0 or 1 element
     try
     {
         std::cout << "Testing span calculation with 1 element: ";
         Span spOne(5);
         spOne.addNumber(42);
-        spOne.shortestSpan(); // Should throw
+        spOne.shortestSpan();
     }
     catch (const std::exception& e)
     {
         std::cout << "Caught -> " << e.what() << std::endl;
     }
 
-    std::cout << "\n=== 3. NEGATIVE NUMBERS & DUPLICATES ===" << std::endl;
+    std::cout << "\n=== 3. NEGATIVE NUMBERS ===" << std::endl;
     try
     {
         Span spNeg(5);
         spNeg.addNumber(-20);
-        spNeg.addNumber(-5);
+        spNeg.addNumber(-6);
         spNeg.addNumber(0);
         spNeg.addNumber(10);
-        spNeg.addNumber(-5); // Duplicate
+        spNeg.addNumber(-5);
 
-        std::cout << "Shortest Span (with duplicate -5): " << spNeg.shortestSpan() << std::endl; // Expected: 0
-        std::cout << "Longest Span (-20 to 10): " << spNeg.longestSpan() << std::endl;         // Expected: 30
+        std::cout << "Shortest Span : " << spNeg.shortestSpan() << std::endl;
+        std::cout << "Longest Span : " << spNeg.longestSpan() << std::endl;
     }
     catch (const std::exception& e)
     {
@@ -95,10 +82,8 @@ int main()
         for (unsigned int i = 0; i < N; ++i)
             randomNumbers.push_back(std::rand());
 
-        // Using iterator range insert
         spLarge.addNumber(randomNumbers.begin(), randomNumbers.end());
-
-        std::cout << "Successfully added " << N << " numbers via iterators." << std::endl;
+        
         std::cout << "Shortest Span: " << spLarge.shortestSpan() << std::endl;
         std::cout << "Longest Span:  " << spLarge.longestSpan() << std::endl;
     }
